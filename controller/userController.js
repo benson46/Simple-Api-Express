@@ -1,3 +1,5 @@
+import { users } from "../data/users.js";
+
 // @desc    Get all users
 // @route   GET /api/users
 export const getUsers = (req, res) => {
