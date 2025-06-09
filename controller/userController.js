@@ -16,13 +16,12 @@ export const getUsers = (req, res) => {
 // @desc    Create a user
 // @route   POST /api/users
 export const createUser = (req, res) => {
-  const { name, email } = req.body;
   try {
+    const { name, email } = req.body;
     if (!name || !email) {
       return res.status(400).json({ message: "Name and email are required" });
     }
-
-    if (users.find((user) => user.email === email)) {
+    if (users.find((user) => user.email == email)) {
       return res.status(400).json({ message: "Email already exists" });
     }
 
@@ -65,8 +64,9 @@ export const deleteUser = (req, res) => {
   try {
     const { id } = req.params;
     const userIndex = users.findIndex((user) => user.id == id);
+    console.log(userIndex);
     if (userIndex === -1) {
-      res.status(400).json({ message: "User not found" });
+      return res.status(400).json({ message: "User not found for delete" });
     }
 
     users.splice(userIndex, 1);

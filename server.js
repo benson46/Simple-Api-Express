@@ -1,4 +1,4 @@
-import express from "express";
+import express, { urlencoded } from "express";
 import router from "./routes/userRotues.js";
 import errorHandlingMiddleware from "./utils/errorHandlingMiddleware.js";
 import { logger } from "./utils/logger.js";
@@ -9,6 +9,7 @@ const port = 3000;
 
 
 app.use(express.json());
+app.use(express.urlencoded({extended:true}))
 app.use(logger)
 
 app.use("/api", router);
